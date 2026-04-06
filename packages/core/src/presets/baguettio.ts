@@ -210,13 +210,13 @@ export class BaguettioPreset extends Preset {
     let premiumizeKey = '';
 
     if (services.includes(constants.ALLDEBRID_SERVICE)) {
-      alldebridKey = this.getServiceCredential(constants.ALLDEBRID_SERVICE, userData) as string;
+      alldebridKey = this.getServiceCredential(constants.ALLDEBRID_SERVICE, userData) || '';
     }
     if (services.includes(constants.TORBOX_SERVICE)) {
-      torboxKey = this.getServiceCredential(constants.TORBOX_SERVICE, userData) as string;
+      torboxKey = this.getServiceCredential(constants.TORBOX_SERVICE, userData) || '';
     }
     if (services.includes(constants.PREMIUMIZE_SERVICE)) {
-      premiumizeKey = this.getServiceCredential(constants.PREMIUMIZE_SERVICE, userData) as string;
+      premiumizeKey = this.getServiceCredential(constants.PREMIUMIZE_SERVICE, userData) || '';
     }
 
     const tmdbApiKey = options.tmdbApiKey || userData.tmdbApiKey || Env.TMDB_API_KEY || "";
