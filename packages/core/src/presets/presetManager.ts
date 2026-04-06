@@ -76,6 +76,7 @@ import { EasynewsSearchPreset } from './easynewsSearch.js';
 import { SeaDexPreset } from './seadex.js';
 import { StreamNZBPreset } from './streamnzb.js';
 import { HdHubPreset } from './hdhub.js';
+import { BaguettioPreset } from './baguettio.js';
 import { Preset } from './index.js';
 
 let PRESET_LIST: string[] = [
@@ -154,6 +155,7 @@ let PRESET_LIST: string[] = [
   'more-like-this',
   'content-deep-dive',
   'hdhub',
+  'baguettio',
 ].filter(Boolean);
 
 export class PresetManager {
@@ -325,6 +327,8 @@ export class PresetManager {
         return StreamNZBPreset;
       case 'hdhub':
         return HdHubPreset;
+      case 'baguettio':
+        return BaguettioPreset;
       default:
         throw new Error(`Preset ${id} not found`);
     }
