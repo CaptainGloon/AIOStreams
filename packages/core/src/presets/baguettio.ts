@@ -4,14 +4,14 @@ import { Env, constants, ServiceId } from '../utils/index.js';
 import { StreamParser } from '../parser/index.js';
 
 class BaguettioStreamParser extends StreamParser {
+  private static readonly TRACKER_REGEX = /\b(YGG|C411|Torr9|G3MINI|G-Free|La-Cale|TOS)\b/i
   protected override getIndexer(
     stream: Stream,
     currentParsedStream: ParsedStream
   ): string | undefined {
     const textToSearch = stream.description || '';
 
-    const trackerRegex = /\b(YGG|C411|Torr9|G3MINI|G-Free|La-Cale|TOS)\b/i;
-    const match = textToSearch.match(trackerRegex);
+    const match = textToSearch.match(BaguettioStreamParser.TRACKER_REGEX);
 
     if (match) {
       return match[1];
@@ -251,7 +251,7 @@ export class BaguettioPreset extends Preset {
       EXCLUDED_QUALITY: [],
     };
 
-    const configString = this.base64EncodeJSON(config);
+    const configString = this.base64EncodeJSON(config, 'urlSafe');
 
     return `${url}/${configString}/manifest.json`;
   }

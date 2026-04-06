@@ -122,7 +122,6 @@ let PRESET_LIST: string[] = [
   'dmm-cast',
   'nuvio-streams',
   'webstreamr',
-  'hdhub',
   'astream',
   'brazuca-torrents',
   'streamasia',
