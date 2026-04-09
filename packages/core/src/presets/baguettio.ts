@@ -31,6 +31,7 @@ export class BaguettioPreset extends Preset {
       constants.ALLDEBRID_SERVICE,
       constants.TORBOX_SERVICE,
       constants.PREMIUMIZE_SERVICE,
+      constants.DEBRIDLINK_SERVICE,
     ];
 
     const supportedResources = [constants.STREAM_RESOURCE];
@@ -208,6 +209,7 @@ export class BaguettioPreset extends Preset {
     let alldebridKey = '';
     let torboxKey = '';
     let premiumizeKey = '';
+    let debridlinkKey = '';
 
     if (services.includes(constants.ALLDEBRID_SERVICE)) {
       alldebridKey = this.getServiceCredential(constants.ALLDEBRID_SERVICE, userData) || '';
@@ -218,6 +220,10 @@ export class BaguettioPreset extends Preset {
     if (services.includes(constants.PREMIUMIZE_SERVICE)) {
       premiumizeKey = this.getServiceCredential(constants.PREMIUMIZE_SERVICE, userData) || '';
     }
+    if (services.includes(constants.DEBRIDLINK_SERVICE)) {
+      debridlinkKey = this.getServiceCredential(constants.DEBRIDLINK_SERVICE, userData) || '';
+    }
+
 
     const tmdbApiKey = options.tmdbApiKey || userData.tmdbApiKey || Env.TMDB_API_KEY || "";
 
@@ -226,6 +232,7 @@ export class BaguettioPreset extends Preset {
       ALLDEBRID_KEY: alldebridKey,
       TORBOX_KEY: torboxKey,
       PREMIUMIZE_KEY: premiumizeKey,
+      DEBRIDLINK_KEY: debridlinkKey,
       // if tmdbApiKey is empty then we use the shared tmdb apikey
       TMDB_SHARED: !tmdbApiKey,
       TMDB_APIKEY: tmdbApiKey,
